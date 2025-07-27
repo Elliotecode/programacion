@@ -1,0 +1,5 @@
+1.- contexto, cual es la informacion en la que quiero que la ia se fije para responderme
+2.- describir la tarea que le estamos solicitando a la ia
+3.- especificar el formato de la respuesta.
+4.- verificar que la respuesta sea coherente con la pregunta que se realizo
+5.- complementar la informacion para aliniar la respuesta a lo que necesitamos.

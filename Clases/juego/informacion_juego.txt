@@ -1,0 +1,32 @@
+elementos:
+* un jugador con forma de _______
+*el jugador puede moverse libremente en la pantalla y su pocision inicial es el centro
+*el jugador tendra vidas que se predeterminaran segun la dificultad
+facil: 6, normal: 4, dificil: 2, extremo 1
+
+*habran 4 dificultades: facil, normal, dificil y extremo
+*el jugador tendra que esquivar lineas que aparecen aleratoriamente en la pantalla con colores aleratorios
+*antes de que aparescan las lineas aparecera un aviso en forma de la linea pero transparente
+facil: aparece 3 segu ndos antes de que aparesca el real
+
+cada que una linea real toque al jugador, se restara una vida,
+si el jugador se queda sin vidas, el pierde el juego.
+
+
+
+
+
+
+codigo no importante:
+    #for linea_fantasma in lineas_fantasmas:
+    #    linea_fantasma.dibujar(pantalla)
+    #    linea_fantasma.crecer(linea_fantasma.control)
+
+    #for linea_real in lineas_reales:
+    #   linea_real.dibujar(pantalla)
+    #  linea_real.oscurecer()
+
+    if linea_real_1 is not None:
+        linea_real_1.dibujar(pantalla)
+        linea_real_1.oscurecer()
+        linea_real_1.quitar_vidas(vidas, player_1)
