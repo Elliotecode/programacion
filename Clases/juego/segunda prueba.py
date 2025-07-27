@@ -99,9 +99,6 @@ class Linea_Real:
 
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
-
-    def oscurecer(self):
-        self.color = (255, 0, 0)  # Cambia el color a rojo brillante
         
     def quitar_vidas(self, vidas, jugador):
         if self.x == jugador.x + jugador.ancho:
@@ -161,7 +158,6 @@ while ejecutando:
 
     #for linea_real in lineas_reales:
     #    linea_real.dibujar(pantalla)
-    #    linea_real.oscurecer()
 
 
 #    if lineas_reales is not None:
