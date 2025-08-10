@@ -141,6 +141,7 @@ while ejecutando:
         linea_fantasma_1.crecer(linea_fantasma_1.control)
         tiempo_actual = pygame.time.get_ticks()
 
+
         if linea_real_1 is None and (tiempo_actual - linea_fantasma_1.tiempo_creacion >= 4000):
             linea_real_1 = linea_real(linea_fantasma_1)
 
