@@ -4,6 +4,7 @@ import random
 pygame.init()
 pygame.font.init()  # Inicializar el módulo de FUENTEs
 
+paco = 1515 #eliminar esta línea después de probar que el archivo se abre bien
 
 #tamaño de la pantalla
 ANCHO_PANTALLA = 800
@@ -23,8 +24,8 @@ vidas = 5
 jugador_herido = False
 juego_terminado = False
 INTERVALO_CREACION = 850  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
 TIEMPO_LINEA_REAL = 5000
-TIEMPO_VIDA_REAL = 3000 
 FPS = 60  # frames por segundo
 reloj = pygame.time.Clock()
 
@@ -121,6 +122,7 @@ class Linea_Real:
         self.color = (255, 255, 255)  # Color blanco
         self.velocidad = 0.0625
         self.control = 0
+        self.tiempo_creacion = pygame.time.get_ticks()
 
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
@@ -145,10 +147,6 @@ lineas_reales = []
 
 #instanciar lineas fantasma
 
-linea_fantasma_1 = Linea_Fantasma()
-#instanciar lineas reales
-linea_real_1 = None
-
 #contadores de vidas
 
 
@@ -161,7 +159,7 @@ while ejecutando:
         if evento.type == pygame.QUIT:
             ejecutando = False
 
-    if vidas > 0 and not juego_terminado:
+    if paco == 1515: #vidas > 0 and not juego_terminado:
         pantalla.fill(COLOR_FONDO)
         tiempo_actual = pygame.time.get_ticks()
         lineas_fantasmas_eliminadas = []
@@ -174,36 +172,43 @@ while ejecutando:
         if tiempo_actual - ultimo_tiempo_creacion >= INTERVALO_CREACION:
             lineas_fantasmas.append(Linea_Fantasma())
             ultimo_tiempo_creacion = tiempo_actual
+            
 
         for linea_fantasma in lineas_fantasmas:
             linea_fantasma.dibujar(pantalla)
             linea_fantasma.crecer()
             linea_fantasma.actualizar_estado(tiempo_actual)
 
-            if tiempo_actual - linea_fantasma.tiempo_creacion >= 4000:
-                lineas_reales.append(Linea_Real(linea_fantasma))
-                lineas_fantasmas_eliminadas.append(linea_fantasma)
+            #if tiempo_actual - linea_fantasma.tiempo_creacion >= 4000:
+            #   lineas_reales.append(Linea_Real(linea_fantasma))
 
             if linea_fantasma.finalizada and not linea_fantasma.reemplazada:
                 lineas_reales.append(Linea_Real(linea_fantasma))
+                lineas_fantasmas_eliminadas.append(linea_fantasma)
                 linea_fantasma.reemplazada = True  # evita duplicados
-
-        #eliminarlas de la existencia
-        for linea_fantasma in lineas_fantasmas_eliminadas:
-            lineas_fantasmas.remove(linea_fantasma)
+        
+                for linea_fantasma in lineas_fantasmas_eliminadas:
+                    lineas_fantasmas.remove(linea_fantasma)
 
         for linea_real in lineas_reales:
             linea_real.dibujar(pantalla)
-            linea_real.oscurecer()
+
+            if tiempo_actual - linea_real.tiempo_creacion >= 100:
+                linea_real.oscurecer()
             if linea_real.quitar_vidas(player_1):
                 if not jugador_herido:
                     vidas -= 1
                     jugador_herido = True
-                    print("jugador herido :(, repito, jugador herido)", jugador_herido)
+                #    print("jugador herido :(, repito, jugador herido)", jugador_herido)
             else:
                 jugador_herido = False
-                print("el jugador se recupero por completo;0", jugador_herido)
+                #print("el jugador se recupero por completo :D", jugador_herido)
 
+            if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
+                lineas_reales_eliminadas.append(linea_real)
+                
+                for linea_real in lineas_reales_eliminadas:
+                    lineas_reales.remove(linea_real)
 
 
         # if tiempo_actual - linea_real.tiempo_creacion >= TIEMPO_VIDA_REAL:
@@ -232,10 +237,16 @@ while ejecutando:
         
         #actualizar pantalla
         pygame.display.flip()
-        pygame.time.delay(1)  # 10 milisegundos
+        pygame.time.delay(6)  # 10 milisegundos
+
 
 pygame.quit()
 
+"""
+tarea pendiente:
+- reparar las vidas del jugador
+- hacer que las lineas no se toquen entre si
+"""
 
 
 
