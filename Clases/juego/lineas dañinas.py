@@ -23,13 +23,14 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 vidas = 5
 #jugador_herido = False
 juego_terminado = False
-INTERVALO_CREACION = 850  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_CREACION = 500  #850  # Intervalo de creación de líneas fantasma en milisegundos
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
 TIEMPO_LINEA_REAL = 5000
 FPS = 60  # frames por segundo
 reloj = pygame.time.Clock()
 
 ultimo_tiempo_creacion = 0
+ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
 
 
 def score(pantalla, vidas):
@@ -77,7 +78,12 @@ class Jugador:
 # configuracion de las lineas fantasma
 class Linea_Fantasma:
     def __init__(self):
-        self.x = random.randint(0, ANCHO_PANTALLA)
+        while True:
+            self.x = random.randint(0, ANCHO_PANTALLA)
+            if self.x not in ocupados:
+                ocupados.append(self.x)
+                break
+        print(ocupados)  # Para depuración, muestra las posiciones ocupadas
         self.y = 0
         self.ancho = 5
         self.alto = ALTO_PANTALLA
@@ -194,6 +200,7 @@ while ejecutando:
                 
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
+            ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
 
         player_1.dibujar(pantalla)
         # Leer teclas presionadas
