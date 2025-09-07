@@ -81,12 +81,11 @@ class Linea_Fantasma:
     def __init__(self):
         while True:
             self.x = random.randint(0, ANCHO_PANTALLA)
-            valores.append(range(self.x - 25, self.x + 25))
-            print(list(valores))  # Para depuración, muestra los rangos de valores
-            if self.x not in ocupados:
-                ocupados.append(self.x)
+            valores = list(range(self.x - 25, self.x + 25))
+            if not any(valor in ocupados for valor in valores):
+                ocupados.extend(valores)
+                #print(ocupados)
                 break
-        print(ocupados)  # Para depuración, muestra las posiciones ocupadas
         self.y = 0
         self.ancho = 5
         self.alto = ALTO_PANTALLA
@@ -203,7 +202,8 @@ while ejecutando:
                 
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
-            ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
+            for valor in range(0, 50):
+                ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
 
         player_1.dibujar(pantalla)
         # Leer teclas presionadas
