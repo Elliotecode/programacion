@@ -23,7 +23,7 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 vidas = 5
 #jugador_herido = False
 juego_terminado = False
-INTERVALO_CREACION = 500  #850  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milisegundos
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
 TIEMPO_LINEA_REAL = 5000
 FPS = 60  # frames por segundo
@@ -31,6 +31,7 @@ reloj = pygame.time.Clock()
 
 ultimo_tiempo_creacion = 0
 ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
+valores = []
 
 
 def score(pantalla, vidas):
@@ -80,6 +81,8 @@ class Linea_Fantasma:
     def __init__(self):
         while True:
             self.x = random.randint(0, ANCHO_PANTALLA)
+            valores.append(range(self.x - 25, self.x + 25))
+            print(list(valores))  # Para depuración, muestra los rangos de valores
             if self.x not in ocupados:
                 ocupados.append(self.x)
                 break
