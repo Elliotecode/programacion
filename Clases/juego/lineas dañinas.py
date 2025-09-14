@@ -233,7 +233,11 @@ pygame.quit()
 
 """
 tarea pendiente:
-- hacer que las lineas no se toquen entre si
 - cuando una linea real descuente una vida, debe desaparecer y compensarlo con una nueva linea fantasma
-- mejorar la estetica del juegos
+- mejorar la estetica del juegos:
+    - que las lineas reales desaparescan suavemente is se tocan
+    - que el fondo flashe en rojo cuando se pierde una vida
+    y flashe blanco cuando se genere una linea real
+    - que el jugador parpadee cuando se toque una linea real
+    y que se vaya fracturando (haciendo grietas) 
 """
