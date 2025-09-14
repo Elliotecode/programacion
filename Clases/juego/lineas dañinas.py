@@ -4,8 +4,6 @@ import random
 pygame.init()
 pygame.font.init()  # Inicializar el módulo de FUENTEs
 
-#paco = 1515 #eliminar esta línea después de probar que el archivo se abre bien
-
 #tamaño de la pantalla
 ANCHO_PANTALLA = 800
 ALTO_PANTALLA = 600
@@ -21,7 +19,6 @@ color_fondo = (25, 0, 0)
 FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 
 vidas = 5
-#jugador_herido = False
 juego_terminado = False
 INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milisegundos
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
@@ -45,23 +42,12 @@ class Jugador:
         self.y = 300
         self.ancho = 25
         self.alto = 25
-        self.velocidad = 0.35
+        self.velocidad = 0.50
         self.color = (255, 255, 255)  # Color blanco
 
     #declaración de funciones
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
-
-    #def nueva_funcion (self, datos_entrada):
-        #self.valores
-        #operaciones
-        #return resultado
-
-
-    ###### función de ejemplo #####
-    # def suma_dos_numeros(self, numero1, numero2)
-#         suma = numero1 + numero2
-#         return suma
 
     def mover(self, teclas):
         if teclas[pygame.K_LEFT] and self.x > 0:
@@ -74,8 +60,6 @@ class Jugador:
             self.y += self.velocidad
 
 
-# Necesitamos crear una nueva CLASE para las lineas fantasma y las lineas reales
-#configuracion de las lineas fantasma y reales
 # configuracion de las lineas fantasma
 class Linea_Fantasma:
     def __init__(self):
@@ -150,14 +134,8 @@ class Linea_Real:
         
 #instanciar jugadores
 player_1 = Jugador()
-"""
-player_2 = jugador()
-"""
-
 lineas_fantasmas = []
 lineas_reales = []
-
-contador_frames = 1
 
 #bucle principal del juego
 ejecutando = True
@@ -166,7 +144,6 @@ while ejecutando:
         if evento.type == pygame.QUIT:
             ejecutando = False
 
-#    if paco == 1515: #vidas > 0 and not juego_terminado:
     pantalla.fill(color_fondo)
     tiempo_actual = pygame.time.get_ticks()
 
@@ -202,6 +179,9 @@ while ejecutando:
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
                 vidas -= 1
                 linea_real.colisionada = True #esto evita colisiones multiples en una misma linea real
+                lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
+                print("linea real eliminada por colision")
+                lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
                 lineas_reales_eliminadas.append(linea_real)
@@ -234,3 +214,21 @@ while ejecutando:
 
 
 pygame.quit()
+
+"""
+tarea pendiente:
+- cuando una linea real descuente una vida, debe desaparecer y compensarlo con una nueva linea fantasma
+-ajustes en dificultas:
+    - cada 30 segundos, aumenta la velocidad de creaación de las lineas fantasma + 20 milisegundos
+    - cada 60 segundos, aumenta la velocidad de crecimiento de las lineas fantasma + 20 milisegundos
+    - al minuto 2, que empiesen a generarse 2 lineas fantasma a la vez
+    y que se generen lineas verticales y horizontales
+
+- mejorar la estetica del juegos:
+    - que las lineas reales desaparescan suavemente is se tocan
+            - que el fondo flashe en rojo cuando se pierde una vida
+            y flashe blanco cuando se genere una linea real
+    - que el jugador parpadee cuando se toque una linea real
+    y que se vaya fracturando (haciendo grietas)
+    - un oscurecer mas suave 
+"""
