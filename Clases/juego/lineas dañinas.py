@@ -196,6 +196,9 @@ while ejecutando:
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
                 vidas -= 1
                 linea_real.colisionada = True #esto evita colisiones multiples en una misma linea real
+                lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
+                print("linea real eliminada por colision")
+                lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
                 lineas_reales_eliminadas.append(linea_real)
@@ -228,12 +231,3 @@ while ejecutando:
 
 
 pygame.quit()
-
-#
-
-"""
-tarea pendiente:
-- hacer que las lineas no se toquen entre si
-- cuando una linea real descuente una vida, debe desaparecer y compensarlo con una nueva linea fantasma
-- mejorar la estetica del juegos
-"""
