@@ -13,7 +13,7 @@ pantalla = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
 pygame.display.set_caption("juegos de habilidad: lineas dañinas")
 
 #color de fondo
-COLOR_FONDO = (0, 0, 0)
+color_fondo = (25, 0, 0)
 
 #FUENTE
 FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
@@ -120,8 +120,11 @@ class Linea_Real:
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
 
+    #def flash_blanco(color_fondo):
+    #    color_fondo = (125, 0, 0)  # Cambia a un color rojo mas fuerte
+
     def oscurecer(self):
-        self.color = (255, 0, 0)  # Cambia a un color rojo
+        self.color = (255, 16, 16)  # Cambia a un color rojo
 
     def quitar_vidas(self, jugador):
         colision = jugador.x + jugador.ancho >= self.x and jugador.x <= self.x + self.ancho
@@ -141,7 +144,7 @@ while ejecutando:
         if evento.type == pygame.QUIT:
             ejecutando = False
 
-    pantalla.fill(COLOR_FONDO)
+    pantalla.fill(color_fondo)
     tiempo_actual = pygame.time.get_ticks()
 
     if not juego_terminado:
@@ -166,8 +169,11 @@ while ejecutando:
 
         for linea_real in lineas_reales:
             linea_real.dibujar(pantalla)
+            color_fondo = (75, 15, 15)  # Cambia a un color rojo mas fuerte
             if tiempo_actual - linea_real.tiempo_creacion >= 100:
                 linea_real.oscurecer()
+                color_fondo = (25, 0, 0)
+                #linea_real.flash_blanco(color_fondo)
 
         #logica de colision controlada y vidas
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
