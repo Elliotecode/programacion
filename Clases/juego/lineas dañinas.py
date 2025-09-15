@@ -73,7 +73,7 @@ class Linea_Fantasma:
         self.y = 0
         self.ancho = 5
         self.alto = ALTO_PANTALLA
-        self.color = (128, 0, 0,)  # Color gris semitransparente
+        self.color = (128, 0, 0)
         self.velocidad = 0.0625
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()  # Tiempo de creación de la línea fantasma
@@ -111,8 +111,8 @@ class Linea_Real:
         self.y = linea_fantasma_ref.y
         self.ancho = max(linea_fantasma_ref.ancho, 50) #linea_fantasma_1.ancho
         self.alto = linea_fantasma_ref.alto
-        self.color = (255, 255, 255)  # Color blanco
-        self.velocidad = 0.0625
+        self.color = [255, 255, 255]  # Color blanco
+        self.velocidad = 5
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()
         self.colisionada = False
@@ -120,11 +120,16 @@ class Linea_Real:
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
 
-    #def flash_blanco(color_fondo):
-    #    color_fondo = (125, 0, 0)  # Cambia a un color rojo mas fuerte
-
     def oscurecer(self):
-        self.color = (255, 16, 16)  # Cambia a un color rojo
+        if self.control < 48:
+            self.color[1] = self.color[1] - self.velocidad
+            self.color[2] = self.color[2] - self.velocidad
+            self.control += 1
+
+    def desbanecer(self):
+        self.color[0] = max(0, self.color[0] - self.velocidad)
+        self.color[1] = max(0, self.color[1] - self.velocidad)
+        self.color[2] = max(0, self.color[2] - self.velocidad)
 
     def quitar_vidas(self, jugador):
         colision = jugador.x + jugador.ancho >= self.x and jugador.x <= self.x + self.ancho
@@ -179,9 +184,14 @@ while ejecutando:
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
                 vidas -= 1
                 linea_real.colisionada = True #esto evita colisiones multiples en una misma linea real
-                lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
-                print("linea real eliminada por colision")
-                lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
+
+            #logica de desvanecimiento y eliminacion de lineas reales
+            if linea_real.colisionada:
+                linea_real.desbanecer()
+                if linea_real.color == [0, 0, 0]:
+                    lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
+                    print("linea real eliminada por colision")
+                    lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
                 lineas_reales_eliminadas.append(linea_real)
