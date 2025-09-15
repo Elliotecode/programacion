@@ -194,7 +194,9 @@ while ejecutando:
                     lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
-                lineas_reales_eliminadas.append(linea_real)
+                linea_real.desbanecer()
+                if linea_real.color == [0, 0, 0]:   
+                    lineas_reales_eliminadas.append(linea_real)
                 
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
