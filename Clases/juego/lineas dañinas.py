@@ -188,16 +188,15 @@ while ejecutando:
             #logica de desvanecimiento y eliminacion de lineas reales
             if linea_real.colisionada:
                 linea_real.desbanecer()
-                if linea_real.color == [0, 0, 0]:
+                if linea_real.color == [0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
-                    print("linea real eliminada por colision")
                     lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
                 linea_real.desbanecer()
-                if linea_real.color == [0, 0, 0]:   
+                if linea_real.color == [0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real)
-                
+        
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
             for valor in range(0, 50):
