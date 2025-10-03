@@ -242,4 +242,8 @@ tarea pendiente:
     - que el jugador parpadee cuando se toque una linea real
     y que se vaya fracturando (haciendo grietas)
     - un oscurecer mas suave 
+
+TAREAS IMPORTANTES:
+- hacer que el jugador sea un alien de space invaders
+y si funciona mesclarlo con main.py
 """
