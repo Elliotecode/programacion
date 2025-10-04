@@ -12,6 +12,9 @@ pantalla = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
 jugador = pygame.image.load("Clases/juego/assets/alien_blano.png").convert_alpha()
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 
+jugador_caminando = pygame.image.load("Clases/juego/assets/alien_move.png").convert_alpha()
+jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+
 #titulo de la ventana
 pygame.display.set_caption("juegos de habilidad: lineas dañinas")
 
@@ -64,6 +67,9 @@ class Jugador:
             self.y -= self.velocidad
         if teclas[pygame.K_DOWN] and self.y + self.alto < ALTO_PANTALLA:
             self.y += self.velocidad
+
+    def banderas(self):
+        pass
 
 
 # configuracion de las lineas fantasma
