@@ -9,6 +9,9 @@ ANCHO_PANTALLA = 800
 ALTO_PANTALLA = 600
 pantalla = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
 
+jugador = pygame.image.load("Clases/juego/assets/alien_blano.png").convert_alpha()
+jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+
 #titulo de la ventana
 pygame.display.set_caption("juegos de habilidad: lineas dañinas")
 
@@ -48,6 +51,9 @@ class Jugador:
     #declaración de funciones
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
+
+    def dibujar_2(self):
+        pantalla.blit(jugador, (self.x, self.y))
 
     def mover(self, teclas):
         if teclas[pygame.K_LEFT] and self.x > 0:
@@ -202,7 +208,8 @@ while ejecutando:
             for valor in range(0, 50):
                 ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
 
-        player_1.dibujar(pantalla)
+        #player_1.dibujar(pantalla)
+        player_1.dibujar_2()
         # Leer teclas presionadas
         teclas = pygame.key.get_pressed()
 
