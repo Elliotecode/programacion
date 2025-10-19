@@ -20,6 +20,7 @@ pygame.display.set_caption("juegos de habilidad: lineas dañinas")
 
 #color de fondo
 color_fondo = (25, 0, 0)
+FONDO = pygame.image.load("Clases/juego/assets/espacioooooo.jpg").convert()
 
 #FUENTE
 FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
@@ -183,6 +184,8 @@ while ejecutando:
             ejecutando = False
 
     pantalla.fill(color_fondo)
+    pygame.image.scale(FONDO, (ANCHO_PANTALLA, ALTO_PANTALLA))
+    pantalla.blit(FONDO, (0, 0))
     tiempo_actual = pygame.time.get_ticks()
 
     if not juego_terminado:
@@ -207,11 +210,11 @@ while ejecutando:
 
         for linea_real in lineas_reales:
             linea_real.dibujar(pantalla)
-            color_fondo = (75, 15, 15)  # Cambia a un color rojo mas fuerte
+            #color_fondo = (75, 15, 15)  # Cambia a un color rojo mas fuerte
             if tiempo_actual - linea_real.tiempo_creacion >= 100:
                 linea_real.oscurecer()
-                color_fondo = (25, 0, 0)
-                #linea_real.flash_blanco(color_fondo)
+            #    color_fondo = (25, 0, 0)
+            #    #linea_real.flash_blanco(color_fondo)
 
         #logica de colision controlada y vidas
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
