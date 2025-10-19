@@ -169,7 +169,7 @@ class Linea_Real:
         return colision
 
 
-        
+
 #instanciar jugadores
 player_1 = Jugador()
 lineas_fantasmas = []
