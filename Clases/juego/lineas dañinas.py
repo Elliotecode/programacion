@@ -55,21 +55,40 @@ class Jugador:
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
 
-    def dibujar_2(self):
+    def animar_idle(self):
         pantalla.blit(jugador, (self.x, self.y))
+
+    def animar_walk(self):
+        pantalla.blit(jugador_caminando, (self.x, self.y))
+
+    def banderas(self):
+        self.moviendose_L = False
+        self.moviendose_R = False
+        self.moviendose_U = False
+        self.moviendose_D = False
 
     def mover(self, teclas):
         if teclas[pygame.K_LEFT] and self.x > 0:
             self.x -= self.velocidad
+            self.moviendose_L = True
+        else:
+            self.moviendose_L = False
         if teclas[pygame.K_RIGHT] and self.x + self.ancho < ANCHO_PANTALLA:
             self.x += self.velocidad
+            self.moviendose_R = True
+        else:
+            self.moviendose_R = False
         if teclas[pygame.K_UP] and self.y > 0:
             self.y -= self.velocidad
+            self.moviendose_U = True
+        else:
+            self.moviendose_U = False
         if teclas[pygame.K_DOWN] and self.y + self.alto < ALTO_PANTALLA:
             self.y += self.velocidad
+            self.moviendose_D = True
+        else:
+            self.moviendose_D = False
 
-    def banderas(self):
-        pass
 
 
 # configuracion de las lineas fantasma
@@ -214,14 +233,15 @@ while ejecutando:
             for valor in range(0, 50):
                 ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
 
-        #player_1.dibujar(pantalla)
-        player_1.dibujar_2()
         # Leer teclas presionadas
         teclas = pygame.key.get_pressed()
-
         # Actualizar posición del jugador
         player_1.mover(teclas)
-        
+        if player_1.moviendose_L or player_1.moviendose_R or player_1.moviendose_U or player_1.moviendose_D:
+            player_1.animar_walk()
+        else:
+            player_1.animar_idle()
+
         score(pantalla, vidas)
 
         if vidas <= 0:
