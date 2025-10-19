@@ -184,7 +184,7 @@ while ejecutando:
             ejecutando = False
 
     pantalla.fill(color_fondo)
-    fondo = pygame.image.scale(FONDO, (ANCHO_PANTALLA, ALTO_PANTALLA))
+    FONDO = pygame.transform.scale(FONDO, (ANCHO_PANTALLA, ALTO_PANTALLA))
     pantalla.blit(FONDO, (0, 0))
     tiempo_actual = pygame.time.get_ticks()
 
