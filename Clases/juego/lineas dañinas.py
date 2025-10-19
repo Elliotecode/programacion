@@ -263,22 +263,12 @@ pygame.quit()
 
 """
 tarea pendiente:
-- cuando una linea real descuente una vida, debe desaparecer y compensarlo con una nueva linea fantasma
 -ajustes en dificultas:
     - cada 30 segundos, aumenta la velocidad de creaación de las lineas fantasma + 20 milisegundos
     - cada 60 segundos, aumenta la velocidad de crecimiento de las lineas fantasma + 20 milisegundos
-    - al minuto 2, que empiesen a generarse 2 lineas fantasma a la vez
     y que se generen lineas verticales y horizontales
 
-- mejorar la estetica del juegos:
-    - que las lineas reales desaparescan suavemente is se tocan
-            - que el fondo flashe en rojo cuando se pierde una vida
-            y flashe blanco cuando se genere una linea real
-    - que el jugador parpadee cuando se toque una linea real
-    y que se vaya fracturando (haciendo grietas)
-    - un oscurecer mas suave 
-
-TAREAS IMPORTANTES:
-- hacer que el jugador sea un alien de space invaders
-y si funciona mesclarlo con main.py
+- ajustes del fondo:
+    - reincorporar el efecto de flash cada que se crea una linea real
+    - agregar transparencia a las lineas fantasma
 """
