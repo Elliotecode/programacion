@@ -118,9 +118,10 @@ class Linea_Fantasma:
         self.ancho_final = None #cambia de valor cuando una linea real finaliza
 
     def dibujar(self, pantalla):
-        surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
-        surface_fantasma.fill(self.color)
-        pantalla.blit(surface_fantasma, (self.x, self.y, self.ancho, self.alto))
+        pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
+        #surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
+        #surface_fantasma.fill(self.color)
+        #pantalla.blit(surface, (self.x, self.y, self.ancho, self.alto))
     
     def crecer(self):
         if self.finalizada:
@@ -147,16 +148,14 @@ class Linea_Real:
         self.y = linea_fantasma_ref.y
         self.ancho = max(linea_fantasma_ref.ancho, 50) #linea_fantasma_1.ancho
         self.alto = linea_fantasma_ref.alto
-        self.color = [255, 255, 255, 255]  # Color blanco
+        self.color = [255, 255, 255]  # Color blanco
         self.velocidad = 5
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()
         self.colisionada = False
 
     def dibujar(self, pantalla):
-        surface_real = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
-        surface_real.fill(self.color)
-        pantalla.blit(surface_real, (self.x, self.y, self.ancho, self.alto))
+        pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
 
     def oscurecer(self):
         if self.control < 48:
