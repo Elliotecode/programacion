@@ -107,7 +107,7 @@ class Linea_Fantasma:
         self.y = 0
         self.ancho = 5
         self.alto = ALTO_PANTALLA
-        self.color = (128, 0, 0)
+        self.color = (128, 0, 0, 128)
         self.velocidad = 0.0625
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()  # Tiempo de creación de la línea fantasma
@@ -120,7 +120,7 @@ class Linea_Fantasma:
     def dibujar(self, pantalla):
         surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
         surface_fantasma.fill(self.color)
-        pygame.draw.rect(surface_fantasma, (self.x, self.y, self.ancho, self.alto))
+        pantalla.blit(surface_fantasma, (self.x, self.y, self.ancho, self.alto))
     
     def crecer(self):
         if self.finalizada:
