@@ -269,6 +269,7 @@ pygame.quit()
 
 """
 tarea pendiente:
+
 -ajustes en dificultas:
     - cada 30 segundos, aumenta la velocidad de creaación de las lineas fantasma + 20 milisegundos
     - cada 60 segundos, aumenta la velocidad de crecimiento de las lineas fantasma + 20 milisegundos
@@ -276,5 +277,7 @@ tarea pendiente:
 
 - ajustes del fondo:
     - reincorporar el efecto de flash cada que se crea una linea real
-    - agregar transparencia a las lineas fantasma
+    - agregar transparencia a las lineas reales
+
+- arreglar el bug de crecimiento de las lineas fantasmas deficiente
 """
