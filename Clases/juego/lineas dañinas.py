@@ -20,6 +20,7 @@ pygame.display.set_caption("juegos de habilidad: lineas dañinas")
 
 #color de fondo
 color_fondo = (25, 0, 0)
+FONDO = pygame.image.load("Clases/juego/assets/espacioooooo.jpg").convert()
 
 #FUENTE
 FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
@@ -106,7 +107,7 @@ class Linea_Fantasma:
         self.y = 0
         self.ancho = 5
         self.alto = ALTO_PANTALLA
-        self.color = (128, 0, 0)
+        self.color = (128, 0, 0, 128)
         self.velocidad = 0.0625
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()  # Tiempo de creación de la línea fantasma
@@ -118,6 +119,9 @@ class Linea_Fantasma:
 
     def dibujar(self, pantalla):
         pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
+        #surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
+        #surface_fantasma.fill(self.color)
+        #pantalla.blit(surface, (self.x, self.y, self.ancho, self.alto))
     
     def crecer(self):
         if self.finalizada:
@@ -169,7 +173,7 @@ class Linea_Real:
         return colision
 
 
-        
+
 #instanciar jugadores
 player_1 = Jugador()
 lineas_fantasmas = []
@@ -183,6 +187,8 @@ while ejecutando:
             ejecutando = False
 
     pantalla.fill(color_fondo)
+    FONDO = pygame.transform.scale(FONDO, (ANCHO_PANTALLA, ALTO_PANTALLA))
+    pantalla.blit(FONDO, (0, 0))
     tiempo_actual = pygame.time.get_ticks()
 
     if not juego_terminado:
@@ -207,11 +213,11 @@ while ejecutando:
 
         for linea_real in lineas_reales:
             linea_real.dibujar(pantalla)
-            color_fondo = (75, 15, 15)  # Cambia a un color rojo mas fuerte
+            #color_fondo = (75, 15, 15)  # Cambia a un color rojo mas fuerte
             if tiempo_actual - linea_real.tiempo_creacion >= 100:
                 linea_real.oscurecer()
-                color_fondo = (25, 0, 0)
-                #linea_real.flash_blanco(color_fondo)
+            #    color_fondo = (25, 0, 0)
+            #    #linea_real.flash_blanco(color_fondo)
 
         #logica de colision controlada y vidas
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
