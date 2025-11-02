@@ -118,7 +118,9 @@ class Linea_Fantasma:
         self.ancho_final = None #cambia de valor cuando una linea real finaliza
 
     def dibujar(self, pantalla):
-        pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
+        surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
+        surface_fantasma.fill(self.color)
+        pygame.draw.rect(surface_fantasma, (self.x, self.y, self.ancho, self.alto))
     
     def crecer(self):
         if self.finalizada:
