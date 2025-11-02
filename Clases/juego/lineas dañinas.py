@@ -99,7 +99,7 @@ class Linea_Fantasma:
     def __init__(self):
         while True:
             self.x = random.randint(0, ANCHO_PANTALLA)
-            valores = list(range(self.x - 25, self.x + 25))
+            valores = list(range(self.x - 24, self.x + 24))
             if not any(valor in ocupados for valor in valores):
                 ocupados.extend(valores)
                 #print(ocupados)
@@ -146,7 +146,7 @@ class Linea_Real:
     def __init__(self, linea_fantasma_ref):
         self.x = linea_fantasma_ref.x
         self.y = linea_fantasma_ref.y
-        self.ancho = max(linea_fantasma_ref.ancho, 50) #linea_fantasma_1.ancho
+        self.ancho = linea_fantasma_ref.ancho #max(linea_fantasma_ref.ancho, 50) #linea_fantasma_1.ancho
         self.alto = linea_fantasma_ref.alto
         self.color = [255, 255, 255]  # Color blanco
         self.velocidad = 5
