@@ -118,10 +118,10 @@ class Linea_Fantasma:
         self.ancho_final = None #cambia de valor cuando una linea real finaliza
 
     def dibujar(self, pantalla):
-        pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
-        #surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
-        #surface_fantasma.fill(self.color)
-        #pantalla.blit(surface, (self.x, self.y, self.ancho, self.alto))
+        #pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
+        surface_fantasma = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
+        surface_fantasma.fill(self.color)
+        pantalla.blit(surface_fantasma, (self.x, self.y, self.ancho, self.alto))
     
     def crecer(self):
         if self.finalizada:
@@ -148,14 +148,17 @@ class Linea_Real:
         self.y = linea_fantasma_ref.y
         self.ancho = linea_fantasma_ref.ancho
         self.alto = linea_fantasma_ref.alto
-        self.color = [255, 255, 255]  # Color blanco
+        self.color = [255, 255, 255, 255]  # Color blanco
         self.velocidad = 5
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()
         self.colisionada = False
 
     def dibujar(self, pantalla):
-        pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
+        surface_real = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
+        surface_real.fill(self.color)
+        pantalla.blit(surface_real, (self.x, self.y, self.ancho, self.alto))
+        #pygame.draw.rect(pantalla, self.color, (self.x, self.y, self.ancho, self.alto))
 
     def oscurecer(self):
         if self.control < 48:
@@ -167,6 +170,7 @@ class Linea_Real:
         self.color[0] = max(0, self.color[0] - self.velocidad)
         self.color[1] = max(0, self.color[1] - self.velocidad)
         self.color[2] = max(0, self.color[2] - self.velocidad)
+        self.color[3] = max(0, self.color[3] - self.velocidad)
 
     def quitar_vidas(self, jugador):
         colision = jugador.x + jugador.ancho >= self.x and jugador.x <= self.x + self.ancho
@@ -227,13 +231,13 @@ while ejecutando:
             #logica de desvanecimiento y eliminacion de lineas reales
             if linea_real.colisionada:
                 linea_real.desbanecer()
-                if linea_real.color == [0, 0, 0] and linea_real not in lineas_reales_eliminadas:
+                if linea_real.color == [0, 0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
                     lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
                 linea_real.desbanecer()
-                if linea_real.color == [0, 0, 0] and linea_real not in lineas_reales_eliminadas:
+                if linea_real.color == [0, 0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real)
         
         for linea_real in lineas_reales_eliminadas:
@@ -277,7 +281,7 @@ tarea pendiente:
         -pensar la estrucura de los niveles
 
 - ajustes del fondo:
-    - reincorporar el efecto de flash cada que se crea una linea real
-        - agregar transparencia a las lineas reales
+    - crear una nueva clase donde se cre un cuadro blanco del tamaño de la pantalla
+    - que aparesca al activarse el flash y que se desvanezca poco a poco
 
 """
