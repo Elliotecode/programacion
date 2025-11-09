@@ -175,11 +175,29 @@ class Linea_Real:
     def quitar_vidas(self, jugador):
         colision = jugador.x + jugador.ancho >= self.x and jugador.x <= self.x + self.ancho
         return colision
+    
 
+class Flash:
+    def __init__(self):
+        self.color = [255, 255, 255, 65]  # Blanco con transparencia
+        self.x = 0
+        self.y = 0
+        self.ancho = ANCHO_PANTALLA
+        self.alto = ALTO_PANTALLA
+        self.control = 0
+        self.velocidad = 5
 
+    def dibujar(self, pantalla):
+        self.surface_flash = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
+        self.surface_flash.fill(self.color)
+        pantalla.blit(self.surface_flash, (self.x, self.y, self.ancho, self.alto))
+
+    def desvanecer(self):
+        self.color[3] = max(0, self.color[3] - self.velocidad)
 
 #instanciar jugadores
 player_1 = Jugador()
+flash = Flash()
 lineas_fantasmas = []
 lineas_reales = []
 
@@ -217,11 +235,11 @@ while ejecutando:
 
         for linea_real in lineas_reales:
             linea_real.dibujar(pantalla)
-            #color_fondo = (75, 15, 15)  # Cambia a un color rojo mas fuerte
+            flash.dibujar(pantalla)
             if tiempo_actual - linea_real.tiempo_creacion >= 100:
                 linea_real.oscurecer()
-            #    color_fondo = (25, 0, 0)
-            #    #linea_real.flash_blanco(color_fondo)
+                flash.desvanecer()
+
 
         #logica de colision controlada y vidas
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
