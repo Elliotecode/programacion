@@ -34,7 +34,7 @@ ultimo_tiempo_animacion = 0
 TIEMPO_LINEA_REAL = 5000
 FPS = 60  # frames por segundo
 reloj = pygame.time.Clock()
-
+linea_creada_real = False
 ultimo_tiempo_creacion = 0
 ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
 valores = []
@@ -185,7 +185,7 @@ class Flash:
         self.ancho = ANCHO_PANTALLA
         self.alto = ALTO_PANTALLA
         self.control = 0
-        self.velocidad = 5
+        self.velocidad = 1.5
 
     def dibujar(self, pantalla):
         self.surface_flash = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)
@@ -195,11 +195,15 @@ class Flash:
     def desvanecer(self):
         self.color[3] = max(0, self.color[3] - self.velocidad)
 
+    def reiniciar(self):
+        self.color[3] = 65  # Reiniciar la transparencia
+
 #instanciar jugadores
 player_1 = Jugador()
-flash = Flash()
+#flash = Flash()
 lineas_fantasmas = []
 lineas_reales = []
+flash = []
 
 #bucle principal del juego
 ejecutando = True
@@ -227,6 +231,7 @@ while ejecutando:
 
             if linea_fantasma.finalizada and not linea_fantasma.reemplazada:
                 lineas_reales.append(Linea_Real(linea_fantasma))
+                flash.append(Flash())
                 lineas_fantasmas_eliminadas.append(linea_fantasma)
                 linea_fantasma.reemplazada = True  # evita duplicados
         
@@ -235,10 +240,9 @@ while ejecutando:
 
         for linea_real in lineas_reales:
             linea_real.dibujar(pantalla)
-            flash.dibujar(pantalla)
             if tiempo_actual - linea_real.tiempo_creacion >= 100:
                 linea_real.oscurecer()
-                flash.desvanecer()
+        
 
 
         #logica de colision controlada y vidas
@@ -257,11 +261,19 @@ while ejecutando:
                 linea_real.desbanecer()
                 if linea_real.color == [0, 0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real)
+
         
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
             for valor in range(0, 50):
                 ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
+
+        for efecto_flash in flash:
+            efecto_flash.dibujar(pantalla)
+            if tiempo_actual - linea_real.tiempo_creacion >= 100:
+                efecto_flash.desvanecer()
+                if efecto_flash.color[3] == 0:
+                    flash.remove(efecto_flash)
 
         # Leer teclas presionadas
         teclas = pygame.key.get_pressed()
@@ -302,4 +314,8 @@ tarea pendiente:
     - crear una nueva clase donde se cre un cuadro blanco del tamaño de la pantalla
     - que aparesca al activarse el flash y que se desvanezca poco a poco
 
+    -como hacemos para que las lineas se cren y se eliminen.
+    #
+    -como podemos insertar una bandera que nos ayude a ver cuando una linea se creo para activar el flash
+    -activar el flash con dicha bandera.
 """
