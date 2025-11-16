@@ -310,12 +310,14 @@ tarea pendiente:
     y que se generen lineas verticales y horizontales
         -pensar la estrucura de los niveles
 
-- ajustes del fondo:
-    - crear una nueva clase donde se cre un cuadro blanco del tamaño de la pantalla
-    - que aparesca al activarse el flash y que se desvanezca poco a poco
+-sonido de fondo y efectos de sonido
+    -musica Y KFC
 
-    -como hacemos para que las lineas se cren y se eliminen.
-    #
-    -como podemos insertar una bandera que nos ayude a ver cuando una linea se creo para activar el flash
-    -activar el flash con dicha bandera.
+-tareas extras:
+    - crear menu principal
+    - crear menu de pausa y botones de reinicio y continuar
+    - generar un executable
+    - hacer un web
+    - sistema de puntuacion
+    - disfrutar el juego
 """
