@@ -27,9 +27,15 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 
 vidas = 5
 juego_terminado = False
+"""
+###############################################################################################
+"""
 INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milisegundos
+"""
+###############################################################################################
+"""
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
-INTERVALO_ANIMACION_JUGADOR = 100  # Intervalo de animación del jugador en milisegundos
+INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 ultimo_tiempo_animacion = 0
 TIEMPO_LINEA_REAL = 5000
 FPS = 60  # frames por segundo
@@ -99,7 +105,7 @@ class Linea_Fantasma:
     def __init__(self):
         while True:
             self.x = random.randint(0, ANCHO_PANTALLA)
-            valores = list(range(self.x - 24, self.x + 24))
+            valores = list(range(self.x - 20, self.x + 20))
             if not any(valor in ocupados for valor in valores):
                 ocupados.extend(valores)
                 #print(ocupados)
@@ -126,10 +132,10 @@ class Linea_Fantasma:
     def crecer(self):
         if self.finalizada:
             return # si se cumple esta condicion, se detiene el crecimiento
-        if self.control < 800:
-            self.ancho += self.velocidad
+        if self.ancho < 40:
+            self.ancho = min(40, self.ancho + self.velocidad)
             self.x -= self.velocidad / 2
-            self.control += 1
+
 
     def actualizar_estado(self, tiempo_actual):
         """
@@ -140,6 +146,9 @@ class Linea_Fantasma:
             self.finalizada = True
             # Congelar ancho en entero para dibujo consistente
             self.ancho_final = int(self.ancho)
+            self.x_final = int(self.x)
+            print("ancho final de linea fantasma:", self.ancho_final)
+            print("Linea fantasma finalizada en x:", self.x - self.ancho_final)
 
 #configuracion de las lineas reales
 class Linea_Real:
@@ -247,7 +256,7 @@ while ejecutando:
 
         #logica de colision controlada y vidas
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
-                vidas -= 1
+                #vidas -= 1
                 linea_real.colisionada = True #esto evita colisiones multiples en una misma linea real
 
             #logica de desvanecimiento y eliminacion de lineas reales

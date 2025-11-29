@@ -1,0 +1,46 @@
+inicias con 5 vidas, se van perdiendo en los niveles y son irrecuperables
+cada 30 segs pasas de nivel
+
+Facil:
+    nivel 1:
+        intervalo: 1000 (menor = mas rapido)
+        velocidad: 0.0625 (mayor = mas rapido)
+    nivel 2:
+        intervalo: 850 (-150)
+        velocidad: 0.0625
+    nivel 3:
+        intervalo: 600 (-250)
+        velocidad: 0.0625
+
+Normal:
+    nivel 4:
+        intervalo: 600 (-150)
+        velocidad: 0.07
+    nivel 5:
+        intervalo: 600
+        velocidad: 0.0850
+    nivel 6:
+        intervalo: 600
+        velocidad: 0.1
+
+Dificil:
+    nivel 7 :
+        intervalo:
+        velocidad:
+    nivel 8:
+        intervalo:
+        velocidad:  
+    nivel 9:
+        intervalo:
+        velocidad:
+
+Extremo:
+    nivel 10:
+        intervalo:
+        velocidad:
+    nivel 11:
+        intervalo:
+        velocidad:
+    nivel 12:
+        intervalo:
+        velocidad:
