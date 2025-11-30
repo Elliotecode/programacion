@@ -1,0 +1,3 @@
+"""
+traer la clase jugador
+"""
