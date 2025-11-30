@@ -27,9 +27,15 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 
 vidas = 5
 juego_terminado = False
+"""
+###############################################################################################
+"""
 INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milisegundos
+"""
+###############################################################################################
+"""
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
-INTERVALO_ANIMACION_JUGADOR = 100  # Intervalo de animación del jugador en milisegundos
+INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 ultimo_tiempo_animacion = 0
 TIEMPO_LINEA_REAL = 5000
 FPS = 60  # frames por segundo
@@ -51,7 +57,7 @@ class Jugador:
         self.y = 300
         self.ancho = 25
         self.alto = 25
-        self.velocidad = 0.50
+        self.velocidad = 0.75
         self.color = (255, 255, 255)  # Color blanco
 
     #declaración de funciones
@@ -99,7 +105,7 @@ class Linea_Fantasma:
     def __init__(self):
         while True:
             self.x = random.randint(0, ANCHO_PANTALLA)
-            valores = list(range(self.x - 24, self.x + 24))
+            valores = list(range(self.x - 20, self.x + 20))
             if not any(valor in ocupados for valor in valores):
                 ocupados.extend(valores)
                 #print(ocupados)
@@ -126,17 +132,17 @@ class Linea_Fantasma:
     def crecer(self):
         if self.finalizada:
             return # si se cumple esta condicion, se detiene el crecimiento
-        if self.control < 800:
-            self.ancho += self.velocidad
+        if self.ancho < 40:
+            self.ancho = min(40, self.ancho + self.velocidad)
             self.x -= self.velocidad / 2
-            self.control += 1
+
 
     def actualizar_estado(self, tiempo_actual):
         """
         Comentario bLoque:
         Detiene la línea al terminar su tiempo como línea fantasma.
         """
-        if not self.finalizada and (tiempo_actual - self.tiempo_creacion >= TIEMPO_LINEA_REAL):
+        if not self.finalizada and self.ancho == 40:    #if not self.finalizada and (tiempo_actual - self.tiempo_creacion >= TIEMPO_LINEA_REAL):
             self.finalizada = True
             # Congelar ancho en entero para dibujo consistente
             self.ancho_final = int(self.ancho)
@@ -266,7 +272,7 @@ while ejecutando:
         
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
-            for valor in range(0, 50):
+            for valor in range(0, 40):
                 ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
 
         for efecto_flash in flash:
