@@ -140,6 +140,7 @@ class Linea_Fantasma:
             self.finalizada = True
             # Congelar ancho en entero para dibujo consistente
             self.ancho_final = int(self.ancho)
+            print(self.ancho_final)
 
 #configuracion de las lineas reales
 class Linea_Real:
