@@ -5,31 +5,70 @@ Facil:
     nivel 1:
         intervalo: 1000 (menor = mas rapido)
         velocidad: 0.0625 (mayor = mas rapido)
+        desvanecimiento: 3000
     nivel 2:
         intervalo: 850 (-150)
         velocidad: 0.0625
+        desvanecimiento: 3000
     nivel 3:
         intervalo: 600 (-250)
         velocidad: 0.0625
+        desvanecimiento: 3000
 
 Normal:
     nivel 4:
         intervalo: 600 (-150)
         velocidad: 0.07
+        desvanecimiento: 3000
     nivel 5:
         intervalo: 600
         velocidad: 0.0850
+        desvanecimiento: 3000
     nivel 6:
         intervalo: 600
         velocidad: 0.1
+        desvanecimiento: 3000
+
+Creacion de la linea horizontal:
+
+Facil:
+    nivel 1:
+        intervalo: 1000 (menor = mas rapido)
+        velocidad: 0.0625 (mayor = mas rapido)
+        desvanecimiento: 3000
+    nivel 2:
+        intervalo: 850 (-150)
+        velocidad: 0.0625
+        desvanecimiento: 3000
+    nivel 3:
+        intervalo: 600 (-250)
+        velocidad: 0.0625
+        desvanecimiento: 3000
+
+Normal:
+    nivel 4:
+        intervalo: 600 (-150)
+        velocidad: 0.07
+        desvanecimiento: 3000
+    nivel 5:
+        intervalo: 600
+        velocidad: 0.0850
+        desvanecimiento: 3000
+    nivel 6:
+        intervalo: 600
+        velocidad: 0.1
+        desvanecimiento: 3000
 
 Dificil:
     nivel 7:
         intervalo: 550
-        velocidad: 0.125
+        velocidad: 0.150
+        desvanecimiento: 3000
     nivel 8:
         intervalo: 450
-        velocidad: 0.150
+        velocidad: 0.250
+        desvanecimiento: 2000
     nivel 9:
         intervalo: 400
-        velocidad: 0.2
+        velocidad: 0.5
+        desvanecimiento: 1000

@@ -57,7 +57,7 @@ class Jugador:
         self.y = 300
         self.ancho = 25
         self.alto = 25
-        self.velocidad = 0.50
+        self.velocidad = 0.75
         self.color = (255, 255, 255)  # Color blanco
 
     #declaración de funciones
@@ -147,8 +147,6 @@ class Linea_Fantasma:
             # Congelar ancho en entero para dibujo consistente
             self.ancho_final = int(self.ancho)
             self.x_final = int(self.x)
-            print("ancho final de linea fantasma:", self.ancho_final)
-            print("Linea fantasma finalizada en x:", self.x - self.ancho_final)
 
 #configuracion de las lineas reales
 class Linea_Real:
@@ -256,7 +254,7 @@ while ejecutando:
 
         #logica de colision controlada y vidas
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
-                #vidas -= 1
+                vidas -= 1
                 linea_real.colisionada = True #esto evita colisiones multiples en una misma linea real
 
             #logica de desvanecimiento y eliminacion de lineas reales
@@ -274,7 +272,7 @@ while ejecutando:
         
         for linea_real in lineas_reales_eliminadas:
             lineas_reales.remove(linea_real)
-            for valor in range(0, 50):
+            for valor in range(0, 40):
                 ocupados.remove(ocupados[0])  # Liberar la posición ocupada al eliminar la línea real
 
         for efecto_flash in flash:
