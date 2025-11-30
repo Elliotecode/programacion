@@ -142,7 +142,7 @@ class Linea_Fantasma:
         Comentario bLoque:
         Detiene la línea al terminar su tiempo como línea fantasma.
         """
-        if not self.finalizada and (tiempo_actual - self.tiempo_creacion >= TIEMPO_LINEA_REAL):
+        if not self.finalizada and self.ancho == 40:    #if not self.finalizada and (tiempo_actual - self.tiempo_creacion >= TIEMPO_LINEA_REAL):
             self.finalizada = True
             # Congelar ancho en entero para dibujo consistente
             self.ancho_final = int(self.ancho)

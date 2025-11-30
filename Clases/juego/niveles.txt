@@ -24,23 +24,12 @@ Normal:
         velocidad: 0.1
 
 Dificil:
-    nivel 7 :
-        intervalo:
-        velocidad:
+    nivel 7:
+        intervalo: 550
+        velocidad: 0.125
     nivel 8:
-        intervalo:
-        velocidad:  
+        intervalo: 450
+        velocidad: 0.150
     nivel 9:
-        intervalo:
-        velocidad:
-
-Extremo:
-    nivel 10:
-        intervalo:
-        velocidad:
-    nivel 11:
-        intervalo:
-        velocidad:
-    nivel 12:
-        intervalo:
-        velocidad:
+        intervalo: 400
+        velocidad: 0.2
