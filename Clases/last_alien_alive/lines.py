@@ -3,7 +3,6 @@ import random
 
 from config import ANCHO_PANTALLA, ALTO_PANTALLA
 ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
-
 # configuracion de las lineas fantasma
 class Linea_Fantasma:
     def __init__(self):
