@@ -1,19 +1,8 @@
-"""
-traer la clase jugador
-"""
+
 import pygame
-import random
-pygame.init()
+from config import ANCHO_PANTALLA, ALTO_PANTALLA, jugador, jugador_caminando, pantalla
 
-#jugador = pygame.image.load("Clases/juego/assets/alien_blano.png").convert_alpha()
-#jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 
-#jugador_caminando = pygame.image.load("Clases/juego/assets/alien_move.png").convert_alpha()
-#jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
-#ANCHO_PANTALLA = 800
-
-#ALTO_PANTALLA = 600
-#pantalla = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
 
 class Jugador:
     def __init__(self):

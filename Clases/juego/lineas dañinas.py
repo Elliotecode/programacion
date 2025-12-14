@@ -19,7 +19,7 @@ jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo
 pygame.display.set_caption("juegos de habilidad: lineas dañinas")
 
 #color de fondo
-color_fondo = (25, 0, 0)
+COLOR_FONDO = (25, 0, 0)
 FONDO = pygame.image.load("Clases/juego/assets/espacioooooo.jpg").convert()
 
 #FUENTE
@@ -219,7 +219,7 @@ while ejecutando:
         if evento.type == pygame.QUIT:
             ejecutando = False
 
-    pantalla.fill(color_fondo)
+    pantalla.fill(COLOR_FONDO)
     FONDO = pygame.transform.scale(FONDO, (ANCHO_PANTALLA, ALTO_PANTALLA))
     pantalla.blit(FONDO, (0, 0))
     tiempo_actual = pygame.time.get_ticks()

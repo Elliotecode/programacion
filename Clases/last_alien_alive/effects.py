@@ -1,6 +1,6 @@
-"""
-traer la clase de flash
-"""
+import pygame
+from config import ANCHO_PANTALLA, ALTO_PANTALLA
+
 class Flash:
     def __init__(self):
         self.color = [255, 255, 255, 65]  # Blanco con transparencia
