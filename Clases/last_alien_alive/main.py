@@ -11,8 +11,9 @@ from levels.level2 import Level_2
 from levels.level_manager import Level_Manager
 
 #niveles
+i = 0
 niveles = [Level_0(), Level_1(), Level_2()]
-nivel_actual = niveles[0]
+nivel_actual = niveles[i]
 print(nivel_actual.intervalo_creacion)
 mannager = Level_Manager()
 
@@ -48,6 +49,13 @@ while ejecutando:
     tiempo_actual = pygame.time.get_ticks()
 
     if not juego_terminado:
+
+        #logica de dificultad y niveles
+        if tiempo_actual - mannager.ultimo_cambio >= mannager.duracion and i < len(niveles) - 1:
+            i += 1
+            nivel_actual = niveles[i]
+            mannager.ultimo_cambio = tiempo_actual
+            print(i)
         if tiempo_actual - ultimo_tiempo_creacion >= INTERVALO_CREACION:
             lineas_fantasmas.append(Linea_Fantasma())
             ultimo_tiempo_creacion = tiempo_actual
