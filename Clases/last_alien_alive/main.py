@@ -5,6 +5,16 @@ from config import *
 from player import Jugador
 from lines import Linea_Fantasma, Linea_Real, ocupados
 from effects import Flash
+from levels.level0 import Level_0
+from levels.level1 import Level_1
+from levels.level2 import Level_2
+from levels.level_manager import Level_Manager
+
+#niveles
+niveles = [Level_0(), Level_1(), Level_2()]
+nivel_actual = niveles[0]
+print(nivel_actual.intervalo_creacion)
+mannager = Level_Manager()
 
 pygame.display.set_caption("Last Alien Alive")
 juego_terminado = False
