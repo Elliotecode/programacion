@@ -55,6 +55,10 @@ while ejecutando:
             i += 1
             nivel_actual = niveles[i]
             mannager.ultimo_cambio = tiempo_actual
+            INTERVALO_CREACION = nivel_actual.intervalo_creacion
+            Linea_Fantasma.velocidad = nivel_actual.velocidad_linea
+            INTERVALO_DE_DESVANECIMIENTO = nivel_actual.desvanecimiento
+
             print(i)
         if tiempo_actual - ultimo_tiempo_creacion >= INTERVALO_CREACION:
             lineas_fantasmas.append(Linea_Fantasma())

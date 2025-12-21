@@ -30,11 +30,11 @@ juego_terminado = False
 """
 ###############################################################################################
 """
-INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_CREACION = 700  # Intervalo de creación de líneas fantasma en milisegundos
 """
 ###############################################################################################
 """
-INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
+INTERVALO_DE_DESVANECIMIENTO = 2500  # Intervalo de desvanecimiento de líneas reales en milisegundos
 INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 ultimo_tiempo_animacion = 0
 TIEMPO_LINEA_REAL = 5000
