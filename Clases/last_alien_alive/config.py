@@ -17,8 +17,8 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 
 #variables de juego
 vidas = 5
-INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milisegundos
-INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
+intervalo_creacion_V = 1000  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_DE_DESVANECIMIENTO_V = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
 INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 TIEMPO_LINEA_REAL = 5000
 

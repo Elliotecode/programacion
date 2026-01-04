@@ -8,13 +8,14 @@ from effects import Flash
 from levels.level0 import Level_0
 from levels.level1 import Level_1
 from levels.level2 import Level_2
+from levels.level3 import Level_3
 from levels.level_manager import Level_Manager
 
 #niveles
 i = 0
 niveles = [Level_0(), Level_1(), Level_2()]
 nivel_actual = niveles[i]
-print(nivel_actual.intervalo_creacion)
+print(nivel_actual.intervalo_creacion_V)
 mannager = Level_Manager()
 
 pygame.display.set_caption("Last Alien Alive")
@@ -55,12 +56,18 @@ while ejecutando:
             i += 1
             nivel_actual = niveles[i]
             mannager.ultimo_cambio = tiempo_actual
-            INTERVALO_CREACION = nivel_actual.intervalo_creacion
-            Linea_Fantasma.velocidad = nivel_actual.velocidad_linea
-            INTERVALO_DE_DESVANECIMIENTO = nivel_actual.desvanecimiento
+            
+            intervalo_creacion_V = nivel_actual.intervalo_creacion_V
+            Linea_Fantasma.velocidad = nivel_actual.velocidad_linea_V
+            INTERVALO_DE_DESVANECIMIENTO_V = nivel_actual.desvanecimiento_V
+
+            variable_sin_valor = nivel_actual.intervalo_creacion_H
+            variable_sin_precio = nivel_actual.velocidad_linea_H
+            variable_sin_poder = nivel_actual.desvanecimiento_H
+
 
             print(i)
-        if tiempo_actual - ultimo_tiempo_creacion >= INTERVALO_CREACION:
+        if tiempo_actual - ultimo_tiempo_creacion >= intervalo_creacion_V:
             lineas_fantasmas.append(Linea_Fantasma())
             ultimo_tiempo_creacion = tiempo_actual
 
@@ -99,7 +106,7 @@ while ejecutando:
                     lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
                     lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
-            if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
+            if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO_V:
                 linea_real.desbanecer()
                 if linea_real.color == [0, 0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real)
@@ -162,4 +169,9 @@ tarea pendiente:
     - hacer un web
     - sistema de puntuacion
     - disfrutar el juego
+
+tareas encargadas:
+    - probar las nuevas configuraciones de niveles
+    - cargar todas las dificultades'
+    - revisar cosas que no sirven y limpiar codigo
 """

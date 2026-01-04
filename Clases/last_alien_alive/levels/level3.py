@@ -1,9 +1,9 @@
 import pygame
 
-class Level_2:
+class Level_3:
     def __init__(self):
         self.intervalo_creacion_V = 700
-        self.velocidad_linea_V = 0.0625
+        self.velocidad_linea_V = 0.075
         self.desvanecimiento_V = 2500
 
         self.intervalo_creacion_H = 9898989898989898
