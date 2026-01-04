@@ -9,11 +9,23 @@ from levels.level0 import Level_0
 from levels.level1 import Level_1
 from levels.level2 import Level_2
 from levels.level3 import Level_3
+from levels.level4 import Level_4
+from levels.level5 import Level_5
+from levels.level6 import Level_6
+from levels.level7 import Level_7
+from levels.level8 import Level_8
+from levels.level9 import Level_9
+from levels.level10 import Level_10
+from levels.level11 import Level_11
+from levels.level12 import Level_12
+from levels.level13 import Level_13
+from levels.level14 import Level_14
 from levels.level_manager import Level_Manager
 
 #niveles
 i = 0
-niveles = [Level_0(), Level_1(), Level_2()]
+niveles = [Level_0(), Level_1(), Level_2(), Level_3(), Level_4(), Level_5(), Level_6(),
+           Level_7(), Level_8(), Level_9(), Level_10(), Level_11(), Level_12(), Level_13(), Level_14()]
 nivel_actual = niveles[i]
 print(nivel_actual.intervalo_creacion_V)
 mannager = Level_Manager()
@@ -65,8 +77,12 @@ while ejecutando:
             variable_sin_precio = nivel_actual.velocidad_linea_H
             variable_sin_poder = nivel_actual.desvanecimiento_H
 
-
-            print(i)
+            print("nuevo nivel:", i)
+            print(" ")
+            print(intervalo_creacion_V)
+            print(Linea_Fantasma.velocidad)
+            print(INTERVALO_DE_DESVANECIMIENTO_V)
+            print(" ")
         if tiempo_actual - ultimo_tiempo_creacion >= intervalo_creacion_V:
             lineas_fantasmas.append(Linea_Fantasma())
             ultimo_tiempo_creacion = tiempo_actual
@@ -158,6 +174,8 @@ tarea pendiente:
     - cada 60 segundos, aumenta la velocidad de crecimiento de las lineas fantasma + 20 milisegundos
     y que se generen lineas verticales y horizontales
         -pensar la estrucura de los niveles
+    
+    -(idea dada por mi hermano) que aparescan puntos de energia que den vidas extras o ralenticen las lineas
 
 -sonido de fondo y efectos de sonido
     -musica Y KFC
@@ -171,7 +189,6 @@ tarea pendiente:
     - disfrutar el juego
 
 tareas encargadas:
-    - probar las nuevas configuraciones de niveles
-    - cargar todas las dificultades'
+    - cargar todas las dificultades
     - revisar cosas que no sirven y limpiar codigo
 """

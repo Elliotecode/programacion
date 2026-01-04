@@ -30,11 +30,11 @@ juego_terminado = False
 """
 ###############################################################################################
 """
-INTERVALO_CREACION = 700  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_CREACION = 400  # Intervalo de creación de líneas fantasma en milisegundos
 """
 ###############################################################################################
 """
-INTERVALO_DE_DESVANECIMIENTO = 2500  # Intervalo de desvanecimiento de líneas reales en milisegundos
+INTERVALO_DE_DESVANECIMIENTO = 1500  # Intervalo de desvanecimiento de líneas reales en milisegundos
 INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 ultimo_tiempo_animacion = 0
 TIEMPO_LINEA_REAL = 5000
@@ -114,7 +114,7 @@ class Linea_Fantasma:
         self.ancho = 5
         self.alto = ALTO_PANTALLA
         self.color = (128, 0, 0, 128)
-        self.velocidad = 0.0625
+        self.velocidad = 0.5
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()  # Tiempo de creación de la línea fantasma
 
