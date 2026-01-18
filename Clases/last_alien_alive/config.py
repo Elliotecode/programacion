@@ -7,7 +7,6 @@ pygame.font.init()
 ANCHO_PANTALLA = 800
 ALTO_PANTALLA = 600
 pantalla = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
-FPS = 60  # frames por segundo
 
 #color de fondo
 COLOR_FONDO = (25, 0, 0)
@@ -19,7 +18,6 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 vidas = 5
 intervalo_creacion_V = 1000  # Intervalo de creación de líneas fantasma en milisegundos
 INTERVALO_DE_DESVANECIMIENTO_V = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
-INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 TIEMPO_LINEA_REAL = 5000
 
 #rutas de assets
