@@ -16,8 +16,8 @@ FUENTE = pygame.font.SysFont("Arial", 30)  # FUENTE de texto
 
 #variables de juego
 vidas = 5
-intervalo_creacion_V = 1000  # Intervalo de creación de líneas fantasma en milisegundos
-INTERVALO_DE_DESVANECIMIENTO_V = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
+intervalo_creacion_V = None  # Intervalo de creación de líneas fantasma en milisegundos
+INTERVALO_DE_DESVANECIMIENTO_V = None  # Intervalo de desvanecimiento de líneas reales en milisegundos
 TIEMPO_LINEA_REAL = 5000
 
 #rutas de assets
@@ -26,3 +26,6 @@ jugador = pygame.image.load("Clases/juego/assets/alien_blano.png").convert_alpha
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 jugador_caminando = pygame.image.load("Clases/juego/assets/alien_move.png").convert_alpha()
 jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+
+velocidad_linea_fantasma_V = None
+

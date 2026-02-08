@@ -1,11 +1,16 @@
 import pygame
 import random
 
+from levels.level4 import Level_4
+from config import velocidad_linea_fantasma_V
+nivel = Level_4()
+
+
 from config import ANCHO_PANTALLA, ALTO_PANTALLA
 ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
 # configuracion de las lineas fantasma
 class Linea_Fantasma:
-    def __init__(self):
+    def __init__(self, velocida):
         while True:
             self.x = random.randint(0, ANCHO_PANTALLA)
             valores = list(range(self.x - 20, self.x + 20))
@@ -17,7 +22,8 @@ class Linea_Fantasma:
         self.ancho = 5
         self.alto = ALTO_PANTALLA
         self.color = (128, 0, 0, 128)
-        self.velocidad = 0.0625
+        from main import velocidad_linea_fantasma_V
+        self.velocidad = velocidad_linea_fantasma_V
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()  # Tiempo de creación de la línea fantasma
 
@@ -48,8 +54,6 @@ class Linea_Fantasma:
         if not self.finalizada and self.ancho == 40:    #if not self.finalizada and (tiempo_actual - self.tiempo_creacion >= TIEMPO_LINEA_REAL):
             self.finalizada = True
             # Congelar ancho en entero para dibujo consistente
-            self.ancho_final = int(self.ancho)
-
 
 #configuracion de las lineas reales
 class Linea_Real:

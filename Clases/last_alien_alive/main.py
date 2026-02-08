@@ -3,7 +3,6 @@ import random
 
 from config import *
 from player import Jugador
-from lines import Linea_Fantasma, Linea_Real, ocupados
 from effects import Flash
 from levels.level0 import Level_0
 from levels.level1 import Level_1
@@ -27,7 +26,6 @@ i = 0
 niveles = [Level_0(), Level_1(), Level_2(), Level_3(), Level_4(), Level_5(), Level_6(),
            Level_7(), Level_8(), Level_9(), Level_10(), Level_11(), Level_12(), Level_13(), Level_14()]
 nivel_actual = niveles[i]
-print(nivel_actual.intervalo_creacion_V)
 mannager = Level_Manager()
 
 pygame.display.set_caption("Last Alien Alive")
@@ -64,31 +62,36 @@ while ejecutando:
     if not juego_terminado:
 
         #logica de dificultad y niveles
-        if tiempo_actual - mannager.ultimo_cambio >= mannager.duracion and i < len(niveles) - 1:
-            i += 1
-            nivel_actual = niveles[i]
-            mannager.ultimo_cambio = tiempo_actual
-            
-            intervalo_creacion_V = nivel_actual.intervalo_creacion_V
-            Linea_Fantasma.velocidad = nivel_actual.velocidad_linea_V
-            INTERVALO_DE_DESVANECIMIENTO_V = nivel_actual.desvanecimiento_V
+        intervalo_creacion_V = nivel_actual.intervalo_creacion_V
+        INTERVALO_DE_DESVANsECIMIENTO_V = nivel_actual.desvanecimiento_V
+        for linea_fantasma in lineas_fantasmas:
+            velocidad_linea_fantasma_V = nivel_actual.velocidad_linea_V
+        print(velocidad_linea_fantasma_V)
+        
+        variable_sin_valor = nivel_actual.intervalo_creacion_H
+        variable_sin_precio = nivel_actual.velocidad_linea_H
+        variable_sin_poder = nivel_actual.desvanecimiento_H
 
-            variable_sin_valor = nivel_actual.intervalo_creacion_H
-            variable_sin_precio = nivel_actual.velocidad_linea_H
-            variable_sin_poder = nivel_actual.desvanecimiento_H
+        if tiempo_actual - mannager.ultimo_cambio >= mannager.duracion and i < len(niveles) - 1:
+            i = i + 1
+            nivel_actual = niveles[i]
+            print(nivel_actual)
+            mannager.ultimo_cambio = tiempo_actual
 
             print("nuevo nivel:", i)
             print(" ")
-            print(intervalo_creacion_V)
-            print(Linea_Fantasma.velocidad)
-            print(INTERVALO_DE_DESVANECIMIENTO_V)
+            #print(intervalo_creacion_V)
+            #print(INTERVALO_DE_DESVANECIMIENTO_V)
             print(" ")
+
+        from lines import Linea_Fantasma, Linea_Real, ocupados
         if tiempo_actual - ultimo_tiempo_creacion >= intervalo_creacion_V:
-            lineas_fantasmas.append(Linea_Fantasma())
+            lineas_fantasmas.append(Linea_Fantasma(velocidad_linea_fantasma_V))
             ultimo_tiempo_creacion = tiempo_actual
 
         lineas_fantasmas_eliminadas = []
         lineas_reales_eliminadas = []
+
         for linea_fantasma in lineas_fantasmas:
             linea_fantasma.dibujar(pantalla)
             linea_fantasma.crecer()
@@ -120,7 +123,7 @@ while ejecutando:
                 linea_real.desbanecer()
                 if linea_real.color == [0, 0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
-                    lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
+                    lineas_fantasmas.append(Linea_Fantasma(velocidad_linea_fantasma_V)) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO_V:
                 linea_real.desbanecer()
@@ -189,6 +192,12 @@ tarea pendiente:
     - disfrutar el juego
 
 tareas encargadas:
-    - cargar todas las dificultades
-    - revisar cosas que no sirven y limpiar codigo
+    - repasar el flujo y la creacion de objetos y sus variables
+    *
+
+    - intentar que funcione con otros niveles fijos
+    -
+
+    - decidir si la logica debe seguir asi (si eso- que hisimos en lines esta correcto)
+    -
 """
