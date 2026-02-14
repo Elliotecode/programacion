@@ -124,20 +124,6 @@ pygame.quit()
 """
 tarea pendiente:
 
--ajustes en dificultas:
-    - cada 30 segundos, aumenta la velocidad de creación de las lineas fantasma + 20 milisegundos
-    - cada 60 segundos, aumenta la velocidad de crecimiento de las lineas fantasma + 20 milisegundos
-    y que se generen lineas verticales y horizontales
-        -pensar la estrucura de los niveles
-
--sonido de fondo y efectos de sonido
-    -musica Y KFC
-
--tareas extras:
-    - crear menu principal
-    - crear menu de pausa y botones de reinicio y continuar
-    - generar un executable
-    - hacer un web
-    - sistema de puntuacion
-    - disfrutar el juego
+- crear un archivo de niveles con nivel 0 y 1 solamente con la variable velocidad 
+- ajustar main para que se actualize el valor de velocidad cuando cambie de nivel
 """
