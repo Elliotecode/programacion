@@ -1,6 +1,8 @@
 import pygame
 import random
 
+from config import level_0, level_1
+
 from config import ANCHO_PANTALLA, ALTO_PANTALLA
 ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
 # configuracion de las lineas fantasma

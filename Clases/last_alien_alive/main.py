@@ -6,6 +6,9 @@ from player import Jugador
 from lines import Linea_Fantasma, Linea_Real, ocupados
 from effects import Flash
 
+from levels.level_0 import Level_0
+from levels.level_1 import Level_1
+
 pygame.display.set_caption("Last Alien Alive")
 juego_terminado = False
 reloj = pygame.time.Clock()

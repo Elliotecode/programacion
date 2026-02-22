@@ -28,3 +28,16 @@ jugador = pygame.image.load("Clases/juego/assets/alien_blano.png").convert_alpha
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 jugador_caminando = pygame.image.load("Clases/juego/assets/alien_move.png").convert_alpha()
 jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+
+#level 0
+velocidad_linea_f_V = 0.0625
+intervalo = 1000
+desvanecimiento = 3000
+
+#level 1
+velocidad_linea_f_V_1 = 0.0625
+intervalo_1 = 800
+desvanecimiento_1 = 2500
+
+def niveles (nivel): 
+    return INTERVALO_CREACION, INTERVALO_DE_DESVANECIMIENTO, velocidad_linea_f_V
