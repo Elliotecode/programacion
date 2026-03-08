@@ -51,7 +51,7 @@ while ejecutando:
 
             if linea_fantasma.finalizada and not linea_fantasma.reemplazada:
                 lineas_reales.append(Linea_Real(linea_fantasma))
-                flash.append(Flash())
+                #flash.append(Flash())
                 lineas_fantasmas_eliminadas.append(linea_fantasma)
                 linea_fantasma.reemplazada = True  # evita duplicados
         
