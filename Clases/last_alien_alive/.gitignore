@@ -1,2 +1,2 @@
-__pycache__/
-levels/__pycache__/
+git rm --cached -r __pycache__
+git rm --cached -r levels/__pycache__
