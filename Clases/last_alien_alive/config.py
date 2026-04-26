@@ -29,3 +29,5 @@ jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píx
 jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
 jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 sonido_laser = pygame.mixer.Sound("assets/starwars.mp3")
+sonido_colision = pygame.mixer.Sound("assets/golpe_por_sable.mp3")
+sonido_muerte = pygame.mixer.Sound("assets/destruccion.mp3")

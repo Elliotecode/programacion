@@ -71,6 +71,10 @@ while ejecutando:
             if linea_real.quitar_vidas(player_1) and not linea_real.colisionada:
                 vidas -= 1
                 linea_real.colisionada = True #esto evita colisiones multiples en una misma linea real
+                if vidas > 0:
+                    sonido_colision.play()
+                else:
+                    sonido_muerte.play()
 
             #logica de desvanecimiento y eliminacion de lineas reales
             if linea_real.colisionada:
@@ -124,22 +128,9 @@ while ejecutando:
 pygame.quit()
 
 """
-tarea pendiente:
+-sonido al crear linea real *
+-sondio al chocar
+-sonido al perder
+-musica de fondo
 
--ajustes en dificultas:
-    - cada 30 segundos, aumenta la velocidad de creación de las lineas fantasma + 20 milisegundos
-    - cada 60 segundos, aumenta la velocidad de crecimiento de las lineas fantasma + 20 milisegundos
-    y que se generen lineas verticales y horizontales
-        -pensar la estrucura de los niveles
-
--sonido de fondo y efectos de sonido
-    -musica Y KFC
-
--tareas extras:
-    - crear menu principal
-    - crear menu de pausa y botones de reinicio y continuar
-    - generar un executable
-    - hacer un web
-    - sistema de puntuacion
-    - disfrutar el juego
 """

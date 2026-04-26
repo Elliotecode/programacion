@@ -2,7 +2,7 @@ import pygame
 import random
 pygame.init()
 pygame.mixer.init()
-from config import ANCHO_PANTALLA, ALTO_PANTALLA, sonido_laser
+from config import ANCHO_PANTALLA, ALTO_PANTALLA, sonido_laser, sonido_colision, sonido_muerte
 ocupados = []  # Lista para rastrear las posiciones ocupadas por líneas fantasma
 # configuracion de las lineas fantasma
 class Linea_Fantasma:
@@ -87,5 +87,3 @@ class Linea_Real:
         colision = jugador.x + jugador.ancho >= self.x and jugador.x <= self.x + self.ancho
         return colision
     
-    def sonido():
-        sonido_laser.play()
