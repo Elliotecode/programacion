@@ -1,7 +1,7 @@
 import pygame
-
 pygame.init()
 pygame.font.init()
+pygame.mixer.init()
 
 #variables globales ;)
 ANCHO_PANTALLA = 800
@@ -28,3 +28,4 @@ jugador = pygame.image.load("assets/alien_blano.png").convert_alpha()
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
 jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+sonido_laser = pygame.mixer.Sound("assets/starwars.mp3")

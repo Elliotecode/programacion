@@ -1,5 +1,6 @@
 import pygame
-import random
+pygame.init()
+pygame.mixer.init()
 
 from config import *
 from player import Jugador
@@ -52,6 +53,7 @@ while ejecutando:
             if linea_fantasma.finalizada and not linea_fantasma.reemplazada:
                 lineas_reales.append(Linea_Real(linea_fantasma))
                 flash.append(Flash())
+                sonido_laser.play()
                 lineas_fantasmas_eliminadas.append(linea_fantasma)
                 linea_fantasma.reemplazada = True  # evita duplicados
         
