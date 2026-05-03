@@ -64,6 +64,7 @@ class Linea_Real:
         self.control = 0
         self.tiempo_creacion = pygame.time.get_ticks()
         self.colisionada = False
+        self.post_mortem = None
 
     def dibujar(self, pantalla):
         surface_real = pygame.Surface((self.ancho, self.alto), pygame.SRCALPHA)

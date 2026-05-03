@@ -1,7 +1,7 @@
 import pygame
+
 pygame.init()
 pygame.font.init()
-pygame.mixer.init()
 
 #variables globales ;)
 ANCHO_PANTALLA = 800
@@ -21,8 +21,6 @@ INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milis
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
 INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 TIEMPO_LINEA_REAL = 5000
-hora_de_muerte = None
-game_over = False
 
 #rutas de assets
 FONDO = pygame.image.load("assets/espacioooooo.jpg").convert()
@@ -30,6 +28,3 @@ jugador = pygame.image.load("assets/alien_blano.png").convert_alpha()
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
 jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
-sonido_laser = pygame.mixer.Sound("assets/starwars.mp3")
-sonido_colision = pygame.mixer.Sound("assets/golpe_por_sable.mp3")
-sonido_muerte = pygame.mixer.Sound("assets/destruccion.mp3")

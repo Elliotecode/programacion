@@ -83,7 +83,10 @@ while ejecutando:
                 linea_real.desbanecer()
                 if linea_real.color == [0, 0, 0, 0] and linea_real not in lineas_reales_eliminadas:
                     lineas_reales_eliminadas.append(linea_real) #elimina la linea real que ha colisionado
-                    lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
+                    if linea_real.post_mortem is None:
+                        linea_real.post_mortem = tiempo_actual #marca el tiempo de muerte para evitar colisiones posteriores y controlar el tiempo de desvanecimiento post-mortem
+                    elif linea_real.port_mortem - tiempo_actual >= 1750: #si han pasado 2 segundos desde la muerte, se elimina la linea real
+                        lineas_fantasmas.append(Linea_Fantasma()) #compensa la linea real eliminada con una nueva linea fantasma
             
             if tiempo_actual - linea_real.tiempo_creacion >= INTERVALO_DE_DESVANECIMIENTO:
                 linea_real.desbanecer()
