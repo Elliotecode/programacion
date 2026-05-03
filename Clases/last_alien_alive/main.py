@@ -9,6 +9,8 @@ from effects import Flash
 
 pygame.display.set_caption("Last Alien Alive")
 juego_terminado = False
+game_over_pending = False
+game_over_start_time = 0
 reloj = pygame.time.Clock()
 linea_creada_real = False
 ultimo_tiempo_creacion = 0
@@ -104,16 +106,23 @@ while ejecutando:
         # Leer teclas presionadas
         teclas = pygame.key.get_pressed()
         # Actualizar posición del jugador
-        player_1.mover(teclas)
-        if player_1.moviendose_L or player_1.moviendose_R or player_1.moviendose_U or player_1.moviendose_D:
-            player_1.animar_walk()
+        if game_over == False:
+            player_1.mover(teclas)
+            if player_1.moviendose_L or player_1.moviendose_R or player_1.moviendose_U or player_1.moviendose_D:
+                player_1.animar_walk()
+            else:
+                player_1.animar_idle()
         else:
-            player_1.animar_idle()
+            pass
 
         score(pantalla, vidas)
 
         if vidas <= 0:
-            juego_terminado = True
+            game_over = True
+            if hora_de_muerte is None:
+                hora_de_muerte = tiempo_actual
+            elif tiempo_actual - hora_de_muerte >= 2000:
+                juego_terminado = True
     
 
     else:
@@ -132,5 +141,9 @@ pygame.quit()
 -sondio al chocar
 -sonido al perder
 -musica de fondo
+
+bugs:
+si chocas con muchas lineas reales, se crean tantas que el juego se queda sin espacio para crear mas lineas fantasma y termina muriendo.
+
 
 """

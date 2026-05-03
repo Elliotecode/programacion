@@ -21,6 +21,8 @@ INTERVALO_CREACION = 1000  # Intervalo de creación de líneas fantasma en milis
 INTERVALO_DE_DESVANECIMIENTO = 3000  # Intervalo de desvanecimiento de líneas reales en milisegundos
 INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 TIEMPO_LINEA_REAL = 5000
+hora_de_muerte = None
+game_over = False
 
 #rutas de assets
 FONDO = pygame.image.load("assets/espacioooooo.jpg").convert()
