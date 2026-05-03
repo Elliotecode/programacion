@@ -137,10 +137,9 @@ while ejecutando:
 pygame.quit()
 
 """
--sonido al crear linea real *
--sondio al chocar
--sonido al perder
+-sonido al moverse
 -musica de fondo
+-musica al perder :(
 
 bugs:
 si chocas con muchas lineas reales, se crean tantas que el juego se queda sin espacio para crear mas lineas fantasma y termina muriendo.
