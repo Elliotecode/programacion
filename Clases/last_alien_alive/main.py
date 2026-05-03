@@ -55,7 +55,8 @@ while ejecutando:
             if linea_fantasma.finalizada and not linea_fantasma.reemplazada:
                 lineas_reales.append(Linea_Real(linea_fantasma))
                 flash.append(Flash())
-                sonido_laser.play()
+                if game_over == False:
+                    sonido_laser.play()
                 lineas_fantasmas_eliminadas.append(linea_fantasma)
                 linea_fantasma.reemplazada = True  # evita duplicados
         
