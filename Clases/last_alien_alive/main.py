@@ -7,6 +7,8 @@ from player import Jugador
 from lines import Linea_Fantasma, Linea_Real, ocupados
 from effects import Flash
 
+sonar_al_moverser = sonido_movimiento.play()
+
 pygame.display.set_caption("Last Alien Alive")
 juego_terminado = False
 game_over_pending = False
@@ -114,6 +116,11 @@ while ejecutando:
             player_1.mover(teclas)
             if player_1.moviendose_L or player_1.moviendose_R or player_1.moviendose_U or player_1.moviendose_D:
                 player_1.animar_walk()
+                if sonar_al_moverser.get_busy() == True:
+                    pass
+                else:
+                    sonido_movimiento.play()
+
             else:
                 player_1.animar_idle()
         else:
@@ -144,9 +151,4 @@ pygame.quit()
 -sonido al moverse
 -musica de fondo
 -musica al perder :(
-
-bugs:
-si chocas con muchas lineas reales, se crean tantas que el juego se queda sin espacio para crear mas lineas fantasma y termina muriendo.
-
-
 """

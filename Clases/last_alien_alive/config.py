@@ -23,6 +23,7 @@ INTERVALO_ANIMACION_JUGADOR = 100  #  de animación del jugador en milisegundos
 TIEMPO_LINEA_REAL = 5000
 hora_de_muerte = None
 game_over = False
+jugador_moviendose = False
 
 #rutas de assets
 FONDO = pygame.image.load("assets/espacioooooo.jpg").convert()
@@ -33,3 +34,4 @@ jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo
 sonido_laser = pygame.mixer.Sound("assets/starwars.mp3")
 sonido_colision = pygame.mixer.Sound("assets/golpe_por_sable.mp3")
 sonido_muerte = pygame.mixer.Sound("assets/destruccion.mp3")
+sonido_movimiento = pygame.mixer.Sound("assets/huida.mp3")
