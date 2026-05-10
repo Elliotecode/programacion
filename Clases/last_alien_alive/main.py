@@ -153,7 +153,6 @@ SONORO:
     -musica al perder :(
 -VISUAL:
     -animacion de muerte
-    -rediseñar fondo
     -hacer la linea real mas brillante
     -(extra) hacer la linea real difuminada
 -JUGABILIDAD:
