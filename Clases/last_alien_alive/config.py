@@ -26,7 +26,7 @@ game_over = False
 jugador_moviendose = False
 
 #rutas de assets
-FONDO = pygame.image.load("assets/espacioooooo.jpg").convert()
+FONDO = pygame.image.load("assets/espaciooooooooo.png").convert()
 jugador = pygame.image.load("assets/alien_blano.png").convert_alpha()
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
 jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
