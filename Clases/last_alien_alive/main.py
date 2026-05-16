@@ -19,6 +19,10 @@ ultimo_tiempo_creacion = 0
 valores = []
 ultimo_tiempo_animacion = 0
 
+i = 1
+explosion_frames = [exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8]
+frame_actual = explosion_frames[i - 1]
+
 def score(pantalla, vidas):
     texto_total = FUENTE.render(f"vidas: {vidas}", True, (255, 255, 255))
     pantalla.blit(texto_total, (10, 10))  # Posición del texto en la pantalla
