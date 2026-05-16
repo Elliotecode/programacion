@@ -26,12 +26,23 @@ game_over = False
 jugador_moviendose = False
 
 #rutas de assets
+
 FONDO = pygame.image.load("assets/espaciooooooooo.png").convert()
-jugador = pygame.image.load("assets/alien_blano.png").convert_alpha()
-jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
-jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
-jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+
 sonido_laser = pygame.mixer.Sound("assets/starwars.mp3")
 sonido_colision = pygame.mixer.Sound("assets/golpe_por_sable.mp3")
 sonido_muerte = pygame.mixer.Sound("assets/destruccion.mp3")
 sonido_movimiento = pygame.mixer.Sound("assets/huida.mp3")
+
+jugador = pygame.image.load("assets/alien_blano.png").convert_alpha()
+jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
+jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
+exp1 = pygame.image.load("assets/explosion/exp1.png").convert_alpha()
+exp2 = pygame.image.load("assets/explosion/exp2.png").convert_alpha()
+exp3 = pygame.image.load("assets/explosion/exp3.png").convert_alpha()
+exp4 = pygame.image.load("assets/explosion/exp4.png").convert_alpha()
+exp5 = pygame.image.load("assets/explosion/exp5.png").convert_alpha()
+exp6 = pygame.image.load("assets/explosion/exp6.png").convert_alpha()
+exp7 = pygame.image.load("assets/explosion/exp7.png").convert_alpha()
+exp8 = pygame.image.load("assets/explosion/exp8.png").convert_alpha()
