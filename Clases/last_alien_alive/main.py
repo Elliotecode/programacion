@@ -19,9 +19,9 @@ ultimo_tiempo_creacion = 0
 valores = []
 ultimo_tiempo_animacion = 0
 
-i = 1
-explosion_frames = [exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8]
-frame_actual = explosion_frames[i - 1]
+#i = 1
+#explosion_frames = [exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8]
+#frame_actual = explosion_frames[i - 1]
 
 def score(pantalla, vidas):
     texto_total = FUENTE.render(f"vidas: {vidas}", True, (255, 255, 255))
@@ -120,6 +120,7 @@ while ejecutando:
             player_1.mover(teclas)
             if player_1.moviendose_L or player_1.moviendose_R or player_1.moviendose_U or player_1.moviendose_D:
                 player_1.animar_walk()
+
                 if sonar_al_moverser.get_busy() == True:
                     pass
                 else:
@@ -128,7 +129,28 @@ while ejecutando:
             else:
                 player_1.animar_idle()
         else:
-            pass
+            final_x = player_1.x
+            final_y = player_1.y
+            print("pocision final", final_x, final_y)
+            print("pocision final", final_x + 10, final_y + 10)
+            print("pocision final", final_x - 10, final_y - 10)
+
+        if game_over == True:
+            imagen_redimensionada = pygame.transform.scale(exp1, (500, 500)) #ancho, alto
+            pantalla.blit(imagen_redimensionada, (final_x - 250, final_y - 250))
+
+
+        """
+        x + a = derecha
+        x - a = izquierda
+        y + a = abajo
+        y - a = arriba
+
+        formula usada = x - h, y - a
+                        ____________
+                              2    
+
+        """
 
         score(pantalla, vidas)
 
@@ -136,7 +158,7 @@ while ejecutando:
             game_over = True
             if hora_de_muerte is None:
                 hora_de_muerte = tiempo_actual
-            elif tiempo_actual - hora_de_muerte >= 2000:
+            elif tiempo_actual - hora_de_muerte >= 4000:
                 juego_terminado = True
     
 
