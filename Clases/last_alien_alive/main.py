@@ -136,11 +136,17 @@ while ejecutando:
             print("pocision final", final_x - 10, final_y - 10)
 
         if game_over == True:
-            imagen_redimensionada = pygame.transform.scale(exp1, (500, 500)) #ancho, alto
-            pantalla.blit(imagen_redimensionada, (final_x - 250, final_y - 250))
-
-
-        """
+            exp1_redi = pygame.transform.scale(exp1, (30, 30)) #ancho, alto
+            pantalla.blit(exp1_redi, (final_x - 15, final_y - 15))
+            if tiempo_actual - hora_de_muerte >= 200:
+                exp2_redi = pygame.transform.scale(exp2, (50, 50)) #ancho, alto
+                pantalla.blit(exp2_redi, (final_x - 25, final_y - 25))
+            """
+            if tiempo_actual - game_over_start_time >= 2000:
+                exp3_redi = pygame.transform.scale(exp3, (75, 75)) #ancho, alto
+                pantalla.blit(exp3_redi, (final_x - 75, final_y - 75))
+            """
+        """   
         x + a = derecha
         x - a = izquierda
         y + a = abajo
