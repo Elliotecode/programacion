@@ -26,12 +26,12 @@ game_over = False
 jugador_moviendose = False
 
 #rutas de assets
-FONDO = pygame.image.load("assets/espaciooooooooo.png").convert()
-jugador = pygame.image.load("assets/alien_blano.png").convert_alpha()
+FONDO = pygame.image.load("Clases/last_alien_alive/assets/Espaciooooooooo.png").convert()
+jugador = pygame.image.load("Clases/last_alien_alive/assets/alien_blano.png").convert_alpha()
 jugador = pygame.transform.scale(jugador, (30, 30))  # Nuevo tamaño: 25x25 píxeles
-jugador_caminando = pygame.image.load("assets/alien_move.png").convert_alpha()
+jugador_caminando = pygame.image.load("Clases/last_alien_alive/assets/alien_move.png").convert_alpha()
 jugador_caminando = pygame.transform.scale(jugador_caminando, (30, 30))  # Nuevo tamaño: 25x25 píxeles
-sonido_laser = pygame.mixer.Sound("assets/starwars.mp3")
-sonido_colision = pygame.mixer.Sound("assets/golpe_por_sable.mp3")
-sonido_muerte = pygame.mixer.Sound("assets/destruccion.mp3")
-sonido_movimiento = pygame.mixer.Sound("assets/huida.mp3")
+sonido_laser = pygame.mixer.Sound("Clases/last_alien_alive/assets/starwars.mp3")
+sonido_colision = pygame.mixer.Sound("Clases/last_alien_alive/assets/golpe_por_sable.mp3")
+sonido_muerte = pygame.mixer.Sound("Clases/last_alien_alive/assets/destruccion.mp3")
+sonido_movimiento = pygame.mixer.Sound("Clases/last_alien_alive/assets/huida.mp3")
