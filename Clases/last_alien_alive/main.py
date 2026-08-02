@@ -153,6 +153,9 @@ SONORO:
     -musica al perder :(
 -VISUAL:
     -animacion de muerte
+        -redimensionar las imagenes en config
+        -sustiruir el if por un ciclo for que llame cada una de las pocisiones del arreglo.
+        -en cada iteracion revisar la pocision de los diferentes frames de la animacion (modificar x y para que esten centradas)
     -hacer la linea real mas brillante
     -(extra) hacer la linea real difuminada
 -JUGABILIDAD:
