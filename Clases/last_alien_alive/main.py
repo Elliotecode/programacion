@@ -183,12 +183,15 @@ while ejecutando:
     
 
     else:
+        efecto_flash.dibujar(pantalla)
         mensaje = FUENTE.render("Juego Terminado", True, (128, 0, 0))
         pantalla.blit(mensaje, (ANCHO_PANTALLA // 2 - mensaje.get_width() // 2, ALTO_PANTALLA // 2 - mensaje.get_height() // 2))
 
         #actualizar pantalla
     pygame.display.flip()
     pygame.time.delay(6)  # 10 milisegundos
+
+
 pygame.quit()
 
 """
@@ -197,7 +200,6 @@ SONORO:
     -musica al perder :(
 -VISUAL:
     -animacion de muerte
-        -redimensionar las imagenes en config
         -sustiruir el if por un ciclo for que llame cada una de las pocisiones del arreglo.
         -en cada iteracion revisar la pocision de los diferentes frames de la animacion (modificar x y para que esten centradas)
     -hacer la linea real mas brillante
