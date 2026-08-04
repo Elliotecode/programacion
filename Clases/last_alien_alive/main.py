@@ -19,6 +19,10 @@ ultimo_tiempo_creacion = 0
 valores = []
 ultimo_tiempo_animacion = 0
 
+#i = 1
+#explosion_frames = [exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8]
+#frame_actual = explosion_frames[i - 1]
+
 def score(pantalla, vidas):
     texto_total = FUENTE.render(f"vidas: {vidas}", True, (255, 255, 255))
     pantalla.blit(texto_total, (10, 10))  # Posición del texto en la pantalla
@@ -116,6 +120,7 @@ while ejecutando:
             player_1.mover(teclas)
             if player_1.moviendose_L or player_1.moviendose_R or player_1.moviendose_U or player_1.moviendose_D:
                 player_1.animar_walk()
+
                 if sonar_al_moverser.get_busy() == True:
                     pass
                 else:
@@ -124,7 +129,48 @@ while ejecutando:
             else:
                 player_1.animar_idle()
         else:
-            pass
+            final_x = player_1.x
+            final_y = player_1.y
+            print("pocision final", final_x, final_y)
+            print("pocision final", final_x + 10, final_y + 10)
+            print("pocision final", final_x - 10, final_y - 10)
+
+        if game_over == True:
+            if tiempo_actual - hora_de_muerte <= 100:
+                pantalla.blit(exp1_redi, (final_x - 15, final_y - 15))
+            if tiempo_actual - hora_de_muerte >= 100 and tiempo_actual - hora_de_muerte <= 200:
+                pantalla.blit(exp2_redi, (final_x - 25, final_y - 25))
+            if tiempo_actual - hora_de_muerte >= 200 and tiempo_actual - hora_de_muerte <= 300:
+                pantalla.blit(exp3_redi, (final_x - 35, final_y - 35))
+            if tiempo_actual - hora_de_muerte >= 300 and tiempo_actual - hora_de_muerte <= 400:
+                pantalla.blit(exp4_redi, (final_x - 55, final_y - 55))
+            if tiempo_actual - hora_de_muerte >= 400 and tiempo_actual - hora_de_muerte <= 500:
+                pantalla.blit(exp5_redi, (final_x - 65, final_y - 65)) 
+            if tiempo_actual - hora_de_muerte >= 500 and tiempo_actual - hora_de_muerte <= 600:
+                pantalla.blit(exp6_redi, (final_x - 75, final_y - 75))
+            if tiempo_actual - hora_de_muerte >= 600 and tiempo_actual - hora_de_muerte <= 700:
+                pantalla.blit(exp7_redi, (final_x - 85, final_y - 85))
+            if tiempo_actual - hora_de_muerte >= 700 and tiempo_actual - hora_de_muerte <= 800:
+                pantalla.blit(exp8_redi, (final_x - 95, final_y - 95))
+
+
+                """            
+                if tiempo_actual - game_over_start_time >= 2000:
+                    exp3_redi = pygame.transform.scale(exp3, (75, 75)) #ancho, alto
+                    pantalla.blit(exp3_redi, (final_x - 75, final_y - 75))
+                """         
+            
+        """   
+        x + a = derecha
+        x - a = izquierda
+        y + a = abajo
+        y - a = arriba
+
+        formula usada = x - h, y - a
+                        ____________
+                              2    
+
+        """
 
         score(pantalla, vidas)
 
@@ -132,19 +178,17 @@ while ejecutando:
             game_over = True
             if hora_de_muerte is None:
                 hora_de_muerte = tiempo_actual
-            elif tiempo_actual - hora_de_muerte >= 2000:
+            elif tiempo_actual - hora_de_muerte >= 4000:
                 juego_terminado = True
     
 
     else:
-        mensaje = FUENTE.render("Juego Terminado", True, (255, 0, 0))
+        mensaje = FUENTE.render("Juego Terminado", True, (128, 0, 0))
         pantalla.blit(mensaje, (ANCHO_PANTALLA // 2 - mensaje.get_width() // 2, ALTO_PANTALLA // 2 - mensaje.get_height() // 2))
 
         #actualizar pantalla
     pygame.display.flip()
     pygame.time.delay(6)  # 10 milisegundos
-
-
 pygame.quit()
 
 """
